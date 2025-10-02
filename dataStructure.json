@@ -1,0 +1,93 @@
+{
+  "adult": false,
+  "backdrop_path": "/xkKDKUHQKgjgGuyzFihKoWQIvK0.jpg",
+  "belongs_to_collection": null,
+  "budget": 0,
+  "genres": [
+    {
+      "id": 27,
+      "name": "Horror"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    }
+  ],
+  "homepage": "http://rabbittrapfilm.com",
+  "id": 1193824,
+  "imdb_id": "tt29567402",
+  "origin_country": ["GB"],
+  "original_language": "en",
+  "original_title": "Rabbit Trap",
+  "overview": "When a musician and her husband move to a remote house in Wales, the music they make disturbs local ancient folk magic, bringing a nameless child to their door who is intent on infiltrating their lives.",
+  "popularity": 9.4068,
+  "poster_path": "/sKnwnnmBpjo9BEskHtja6ToXUV1.jpg",
+  "production_companies": [
+    {
+      "id": 34519,
+      "logo_path": "/MGFizEilC4bv5aDeF8YfEyjDVG.png",
+      "name": "SpectreVision",
+      "origin_country": "US"
+    },
+    {
+      "id": 52855,
+      "logo_path": "/9BWTbwgruGMPcVvwCCDjqctdCTA.png",
+      "name": "Mad as Birds",
+      "origin_country": "GB"
+    },
+    {
+      "id": 144803,
+      "logo_path": "/yXwiJ1poBK106mUDBLNfIWcaeQg.png",
+      "name": "Align",
+      "origin_country": "US"
+    },
+    {
+      "id": 61922,
+      "logo_path": "/aGPysvtFfH8d8UjekpZD3GT9m7k.png",
+      "name": "Bankside Films",
+      "origin_country": "GB"
+    },
+    {
+      "id": 249480,
+      "logo_path": null,
+      "name": "Wiser Films",
+      "origin_country": "US"
+    },
+    {
+      "id": 171436,
+      "logo_path": "/2PCuIrmhOMX9eGpxs8PQWjxfU3s.png",
+      "name": "Carte Blanche",
+      "origin_country": "US"
+    }
+  ],
+  "production_countries": [
+    {
+      "iso_3166_1": "US",
+      "name": "United States of America"
+    },
+    {
+      "iso_3166_1": "GB",
+      "name": "United Kingdom"
+    }
+  ],
+  "release_date": "2025-09-12",
+  "revenue": 0,
+  "runtime": 88,
+  "spoken_languages": [
+    {
+      "english_name": "English",
+      "iso_639_1": "en",
+      "name": "English"
+    }
+  ],
+  "status": "Released",
+  "tagline": "If you've heard it... it's too late.",
+  "title": "Rabbit Trap",
+  "video": false,
+  "vote_average": 8.3,
+  "vote_count": 3
+}
