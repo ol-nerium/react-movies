@@ -1,8 +1,7 @@
-const films = [{ url: '', title: '' }];
+import MoviesList from '@/components/MoviesList/MoviesList';
 
-import { getData, getTranding } from '@/utils/api';
+import { getTranding } from '@/utils/api';
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 
 // const testArr = {
 //   adult: false,
@@ -38,15 +37,7 @@ export default function Home() {
   return (
     <>
       <h2>Trending today</h2>
-      <ul>
-        {trandingArr.map(({ id, title, name }) => {
-          return (
-            <li key={id}>
-              <Link to={`/Movies/${id}`}>{title}</Link>
-            </li>
-          );
-        })}
-      </ul>
+      <MoviesList filmsArr={trandingArr} />
     </>
   );
 }
