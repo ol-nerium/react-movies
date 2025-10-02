@@ -14,9 +14,8 @@ export default function MovieCard() {
   });
   const { filmId } = useParams();
   const location = useLocation();
-  // const state = useRef({ from: location.pathname });
-  // location.state = state;
-  console.log(location);
+
+  // console.log(location);
   useEffect(() => {
     if (!filmId) return;
     getMovieById(filmId).then(res => {
@@ -24,13 +23,14 @@ export default function MovieCard() {
     });
   }, [filmId]);
 
-  const backLinkRef = useRef(location.state?.from ?? '/movies');
+  // const backLinkRef = useRef(location.state?.from ?? '/movies');
+  const backLinkRef = location.state?.from ?? '/movies';
   return (
     <>
-      <Link to={backLinkRef.current}>back</Link>
+      {/* <Link to={backLinkRef.current}>back</Link> */}
+      <Link to={backLinkRef}>back</Link>
       <MainInfoCard filmInfo={filmData} />
-      <AdditionalInfoCard state={backLinkRef.current} />
-      {/* // ??? */}
+      <AdditionalInfoCard testState={location} />
       <Outlet />
     </>
   );
