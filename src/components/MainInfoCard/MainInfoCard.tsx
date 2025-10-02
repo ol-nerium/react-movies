@@ -1,13 +1,21 @@
 import css from './MainInfoCard.module.css';
+import picture from './noImage.jpg';
 
-export default function MainInfoCard({ filmInfo }) {
+export default function MainInfoCard({
+  filmInfo,
+}: {
+  filmInfo: { [key: string]: any };
+}) {
   const { poster_path, title, overview, genres } = filmInfo;
-
   return (
     <div className={css.mainCard}>
       <div className="imgWrap">
         <img
-          src={`https://image.tmdb.org/t/p/w780/${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w780/${poster_path}`
+              : picture
+          }
           alt={title}
         />
       </div>
@@ -18,7 +26,7 @@ export default function MainInfoCard({ filmInfo }) {
       <h5 className={css.genresTitle}>Genres</h5>
       <p className={css.genres}>
         {genres
-          .map(item => item.name)
+          .map((item: { id: number; name: string }) => item.name)
           .join(' ')
           .trim()}
       </p>

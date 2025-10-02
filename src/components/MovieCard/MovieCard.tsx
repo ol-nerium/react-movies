@@ -1,7 +1,6 @@
-import { useParams, Outlet, Link } from 'react-router-dom';
-import css from './MovieCard.module.css';
-import { getMovieById, getMovieByName } from '@/utils/api';
-import { useEffect, useState } from 'react';
+import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
+import { getMovieById } from '@/utils/api';
+import { useEffect, useRef, useState } from 'react';
 
 import MainInfoCard from '@/components/MainInfoCard/MainInfoCard';
 import AdditionalInfoCard from '@/components/AdditionalInfoCard/AdditionalInfoCard';
@@ -14,7 +13,10 @@ export default function MovieCard() {
     genres: [],
   });
   const { filmId } = useParams();
-
+  const location = useLocation();
+  // const state = useRef({ from: location.pathname });
+  // location.state = state;
+  console.log(location);
   useEffect(() => {
     if (!filmId) return;
     getMovieById(filmId).then(res => {
@@ -22,19 +24,13 @@ export default function MovieCard() {
     });
   }, [filmId]);
 
-  // useEffect(() => {
-  //   console.log(filmName);
-  //   if (!filmName) return;
-  //   getMovieByName(filmName).then(res => {
-  //     setFilmData(res.data.results);
-  //   });
-  // }, [filmName]);
-
+  const backLinkRef = useRef(location.state?.from ?? '/movies');
   return (
     <>
-      <Link to="/">Назад</Link>
+      <Link to={backLinkRef.current}>back</Link>
       <MainInfoCard filmInfo={filmData} />
-      <AdditionalInfoCard filmInfo={filmData} />
+      <AdditionalInfoCard state={backLinkRef.current} />
+      {/* // ??? */}
       <Outlet />
     </>
   );

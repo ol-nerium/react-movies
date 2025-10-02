@@ -1,54 +1,49 @@
 import { useEffect, useState } from 'react';
 import { getMoviesListByName } from '@/utils/api';
-import { useSearchParams } from 'react-router-dom';
-// import MovieCard from '@/components/MovieCard/MovieCard';
+import { useSearchParams, useLocation, Link } from 'react-router-dom';
+
 import MoviesList from '@/components/MoviesList/MoviesList';
+import SearchBox from '@/components/SearchBox/SearchBox';
 
 export default function Movies() {
-  const [value, setValue] = useState('');
   const [resArr, setResArr] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
-  const searchingRequestValue = searchParams.get('query');
+  const searchingRequestValue = searchParams.get('query') ?? '';
 
-  // Функція оновлення певного ключа
-  const updateSearchParams = (key, value) => {
-    // 1. Копіюємо існуючі параметри
+  // Функція оновлення ключа url
+  const updateSearchParams = (key: string, value: string) => {
     const updatedParams = new URLSearchParams(searchParams);
-
-    // 2. Оновлюємо певний ключ
     updatedParams.set(key, value);
-
-    // 3. Застосовуємо зміни до URL
     setSearchParams(updatedParams);
   };
 
-  function handleChange(e) {
-    setValue(e.target.value);
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
+  function handleSubmit(value: string) {
     updateSearchParams('query', value);
-    setValue('');
   }
 
   useEffect(() => {
-    if (searchingRequestValue === null) return;
-    console.log(searchingRequestValue);
+    if (searchingRequestValue === '') return;
     getMoviesListByName(searchingRequestValue).then(res =>
       setResArr(res.data.results)
     );
   }, [searchingRequestValue]);
 
+  const location = useLocation();
+  // location.state = { from: location.pathname };
+  // console.log(location);
+
   return (
     <>
-      {searchingRequestValue || (
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={value} onChange={handleChange} />
-          <button type="submit">Search</button>
-        </form>
+      {!searchingRequestValue ? (
+        <SearchBox onSubmit={handleSubmit} />
+      ) : (
+        <>
+          <Link to={location.state} state={{ from: location }}>
+            back
+          </Link>
+          <MoviesList filmsArr={resArr} />
+        </>
       )}
-      <MoviesList filmsArr={resArr} />
     </>
   );
 }

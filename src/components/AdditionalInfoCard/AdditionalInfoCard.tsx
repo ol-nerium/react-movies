@@ -1,8 +1,10 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import css from './AdditionalInfoCard.module.css';
 
-export default function AdditionalInfoCard({ filmInfo }) {
-  const {} = filmInfo;
+export default function AdditionalInfoCard() {
+  // const location = useLocation();
+  // location.state = state;
+  // console.log(location);
   return (
     <div className={css.additionalCard}>
       <p className={css.additionalTitle}>Additional information</p>
