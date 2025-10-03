@@ -1,5 +1,7 @@
 /* .castList {
 } */
+/* .castItemImg {
+} */
 .castListItem {
   display: flex;
   gap: 2rem;
@@ -19,8 +21,7 @@
   justify-content: center;
   font-size: 1.5rem;
 }
-/* .castItemImg {
-} */
+
 .castItemText {
   font-weight: 400;
 }

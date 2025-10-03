@@ -19,8 +19,8 @@
 .additionalInfoListItem a:focus {
   color: brown;
 }
-.additionalInfoListItem {
-}
+/* .additionalInfoListItem {
+} */
 
 .additionalTitle {
   font-weight: 700;
@@ -31,6 +31,5 @@
 }
 .link.active {
   font-weight: 700;
-
   color: brown;
 }

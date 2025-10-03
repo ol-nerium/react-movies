@@ -8,6 +8,7 @@ export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const { filmId } = useParams();
   useEffect(() => {
+    if (!filmId) return;
     getReviews(filmId).then(res => setReviews(res.data.results));
   }, [filmId]);
   return (

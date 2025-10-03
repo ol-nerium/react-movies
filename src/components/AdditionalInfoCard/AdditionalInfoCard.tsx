@@ -1,9 +1,24 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import css from './AdditionalInfoCard.module.css';
 
-export default function AdditionalInfoCard({ testState }) {
-  const backLinkRef = testState.state;
-  function linkBuilder(classes) {
+export default function AdditionalInfoCard({
+  parentState,
+}: {
+  parentState: {
+    hash: string;
+    key: string;
+    pathname: string;
+    search: string;
+    state: { from: string };
+  };
+}) {
+  console.log(parentState);
+  const backLinkRef = parentState.state;
+  function linkBuilder(classes: {
+    isActive: boolean;
+    isPending: boolean;
+    isTransitioning: boolean;
+  }) {
     if (classes.isActive) return `${css.link} ${css.active}`;
     return css.link;
   }

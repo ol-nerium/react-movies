@@ -1,6 +1,6 @@
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
 import { getMovieById } from '@/utils/api';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import css from './MovieCard.module.css';
 
 import MainInfoCard from '@/components/MainInfoCard/MainInfoCard';
@@ -31,7 +31,7 @@ export default function MovieCard() {
         back
       </Link>
       <MainInfoCard filmInfo={filmData} />
-      <AdditionalInfoCard testState={location} />
+      <AdditionalInfoCard parentState={location} />
       <Outlet />
     </div>
   );
