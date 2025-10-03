@@ -1,6 +1,7 @@
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
 import { getMovieById } from '@/utils/api';
 import { useEffect, useRef, useState } from 'react';
+import css from './MovieCard.module.css';
 
 import MainInfoCard from '@/components/MainInfoCard/MainInfoCard';
 import AdditionalInfoCard from '@/components/AdditionalInfoCard/AdditionalInfoCard';
@@ -14,7 +15,6 @@ export default function MovieCard() {
   });
   const { filmId } = useParams();
   const location = useLocation();
-  console.log(location);
   useEffect(() => {
     if (!filmId) return;
     getMovieById(filmId).then(res => {
@@ -25,12 +25,14 @@ export default function MovieCard() {
   // const backLinkRef = useRef(location.state?.from ?? '/movies');
   const backLinkRef = location.state?.from ?? '/movies';
   return (
-    <>
+    <div className={css.movieCard}>
       {/* <Link to={backLinkRef.current}>back</Link> */}
-      <Link to={backLinkRef}>back</Link>
+      <Link to={backLinkRef} className={css.backLink}>
+        back
+      </Link>
       <MainInfoCard filmInfo={filmData} />
       <AdditionalInfoCard testState={location} />
       <Outlet />
-    </>
+    </div>
   );
 }

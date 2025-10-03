@@ -55,15 +55,36 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
-} */
+li,
+ul {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  /* keeps aspect ratio */
+  font-style: italic;
+  /* for screen readers/ if image doesn't load highlight that something's wrong */
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* goes with pair with bgimage inline style with low-res pic for the case of slow internet */
+  shape-margin: 1em;
+  /* in the case of floating image */
+
+  object-fit: cover;
+}

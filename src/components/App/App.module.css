@@ -17,3 +17,7 @@ nav {
 .link:hover {
   color: rgb(157, 58, 58);
 }
+
+.link {
+  font-size: 2rem;
+}

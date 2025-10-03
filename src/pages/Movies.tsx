@@ -31,14 +31,7 @@ export default function Movies() {
   return (
     <>
       <SearchBox onSubmit={handleSubmit} />
-      {!searchingRequestValue || (
-        <>
-          {/* <Link to={location.state} state={{ from: location }}>
-            back
-          </Link> */}
-          <MoviesList filmsArr={resArr} />
-        </>
-      )}
+      {!searchingRequestValue || <MoviesList filmsArr={resArr} />}
     </>
   );
 }

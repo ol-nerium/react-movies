@@ -1,14 +1,54 @@
+.imgWrap {
+  border-radius: 2rem;
+  overflow: hidden;
+  margin: 0;
+  @media screen and (min-width: 900px) {
+    width: 60%;
+  }
+}
+
+.imgWrap img {
+  max-inline-size: 100%;
+  display: inline-block;
+}
+
 .mainCard {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.movieFace {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .cardTitle {
+  font-size: 3rem;
 }
+
 .score {
+  font-size: 2rem;
+}
+
+.score span {
+  color: rgb(184, 100, 100);
 }
 .overviewTitle {
+  font-size: 2rem;
 }
 .overviewText {
+  font-size: 1rem;
 }
 .genresTitle {
+  font-size: 1.5rem;
 }
 .genres {
+  color: rgb(184, 100, 100);
 }

@@ -3,6 +3,8 @@ import { getCredits } from '@/utils/api';
 import { useEffect, useState } from 'react';
 import picture from './noImage.jpg';
 
+import css from './Cast.module.css';
+
 export default function Cast() {
   const [cast, setCast] = useState([]);
   const { filmId } = useParams();
@@ -14,12 +16,13 @@ export default function Cast() {
     });
   }, [filmId]);
   return (
-    <ul>
+    <ul className={css.castList}>
       {cast.length > 0 ? (
         cast.map(({ id, profile_path, name, character }) => (
-          <li key={id}>
-            <div>
+          <li key={`${id}${character}`} className={css.castListItem}>
+            <div className={css.castItemImgWrap}>
               <img
+                className={css.castItemImg}
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
@@ -27,13 +30,23 @@ export default function Cast() {
                 }
                 alt={name}
               />
-              <p>Name:{name}</p>
-              <p>Character: {character}</p>
             </div>
+            <ul className={css.castItemContent}>
+              <li>
+                <p className={css.castItemText}>
+                  Name: <span>{name}</span>
+                </p>
+              </li>
+              <li>
+                <p className={css.castItemText}>
+                  Character: <span>{character}</span>
+                </p>
+              </li>
+            </ul>
           </li>
         ))
       ) : (
-        <p>No Info</p>
+        <p className={css.castItemText}>No Info</p>
       )}
     </ul>
   );

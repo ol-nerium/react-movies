@@ -1,5 +1,5 @@
 import MoviesList from '@/components/MoviesList/MoviesList';
-
+import Title from '@/components/Title/Title';
 import { getTranding } from '@/utils/api';
 import { useState, useEffect } from 'react';
 
@@ -14,7 +14,7 @@ export default function Home() {
 
   return (
     <>
-      <h2>Trending today</h2>
+      <Title text="Trending today" />
       <MoviesList filmsArr={trandingArr} />
     </>
   );
