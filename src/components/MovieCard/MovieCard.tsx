@@ -1,18 +1,22 @@
 import { useParams, Outlet, Link, useLocation } from 'react-router-dom';
-import { getMovieById } from '@/utils/api';
 import { useEffect, useState } from 'react';
+import { lazy, Suspense } from 'react';
+
+import { getMovieById } from '@/utils/api';
 import css from './MovieCard.module.css';
 
-import MainInfoCard from '@/components/MainInfoCard/MainInfoCard';
-import AdditionalInfoCard from '@/components/AdditionalInfoCard/AdditionalInfoCard';
+// import MainInfoCard from '@/components/MainInfoCard/MainInfoCard';
+// import AdditionalInfoCard from '@/components/AdditionalInfoCard/AdditionalInfoCard';
+
+const MainInfoCard = lazy(
+  () => import('@/components/MainInfoCard/MainInfoCard')
+);
+const AdditionalInfoCard = lazy(
+  () => import('@/components/AdditionalInfoCard/AdditionalInfoCard')
+);
 
 export default function MovieCard() {
-  const [filmData, setFilmData] = useState({
-    poster_path: '',
-    title: '',
-    overview: '',
-    genres: [],
-  });
+  const [filmData, setFilmData] = useState(null);
   const { filmId } = useParams();
   const location = useLocation();
   useEffect(() => {
@@ -26,13 +30,22 @@ export default function MovieCard() {
   const backLinkRef = location.state?.from ?? '/movies';
   return (
     <div className={css.movieCard}>
-      {/* <Link to={backLinkRef.current}>back</Link> */}
-      <Link to={backLinkRef} className={css.backLink}>
-        back
-      </Link>
-      <MainInfoCard filmInfo={filmData} />
-      <AdditionalInfoCard parentState={location} />
-      <Outlet />
+      <Suspense fallback={<div>Loading Card...</div>}>
+        {/* <Link to={backLinkRef.current}>back</Link> */}
+        {filmData && (
+          <>
+            <Link to={backLinkRef} className={css.backLink}>
+              back
+            </Link>
+            <MainInfoCard filmInfo={filmData} />
+            <AdditionalInfoCard parentState={location} />
+          </>
+        )}
+      </Suspense>
+
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 }

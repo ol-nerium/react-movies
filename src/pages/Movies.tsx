@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { getMoviesListByName } from '@/utils/api';
 import { useSearchParams } from 'react-router-dom';
 
-import MoviesList from '@/components/MoviesList/MoviesList';
-import SearchBox from '@/components/SearchBox/SearchBox';
+const MoviesList = lazy(() => import('@/components/MoviesList/MoviesList'));
+const SearchBox = lazy(() => import('@/components/SearchBox/SearchBox'));
 
 export default function Movies() {
   const [resArr, setResArr] = useState([]);
@@ -29,9 +29,9 @@ export default function Movies() {
   }, [searchingRequestValue]);
 
   return (
-    <>
+    <Suspense fallback={<div>Loading Movies page...</div>}>
       <SearchBox onSubmit={handleSubmit} />
       {!searchingRequestValue || <MoviesList filmsArr={resArr} />}
-    </>
+    </Suspense>
   );
 }

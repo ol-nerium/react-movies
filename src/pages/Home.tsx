@@ -1,7 +1,9 @@
-import MoviesList from '@/components/MoviesList/MoviesList';
-import Title from '@/components/Title/Title';
+import { useState, useEffect, lazy, Suspense } from 'react';
+
 import { getTranding } from '@/utils/api';
-import { useState, useEffect } from 'react';
+
+const MoviesList = lazy(() => import('@/components/MoviesList/MoviesList'));
+const Title = lazy(() => import('@/components/Title/Title'));
 
 export default function Home() {
   const [trandingArr, setTrandingArr] = useState([]);
@@ -13,9 +15,9 @@ export default function Home() {
   }, []);
 
   return (
-    <>
+    <Suspense fallback={<div>Loading Homapage...</div>}>
       <Title text="Trending today" />
       <MoviesList filmsArr={trandingArr} />
-    </>
+    </Suspense>
   );
 }

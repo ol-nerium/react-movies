@@ -2,14 +2,23 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 
 import css from './App.module.css';
+import { lazy, Suspense } from 'react';
 
-import Container from '@/components/Container/Container';
-import Home from '@/pages/Home';
-import Movies from '@/pages/Movies';
-import NotFound from '@/pages/NotFound';
-import MovieCard from '@/components/MovieCard/MovieCard';
-import Cast from '@/components/Cast/Cast';
-import Reviews from '@/components/Reviews/Reviews';
+// import Container from '@/components/Container/Container';
+// import Home from '@/pages/Home';
+// import Movies from '@/pages/Movies';
+// import NotFound from '@/pages/NotFound';
+// import MovieCard from '@/components/MovieCard/MovieCard';
+// import Cast from '@/components/Cast/Cast';
+// import Reviews from '@/components/Reviews/Reviews';
+
+const Container = lazy(() => import('@/components/Container/Container'));
+const Home = lazy(() => import('@/pages/Home'));
+const Movies = lazy(() => import('@/pages/Movies'));
+const NotFound = lazy(() => import('@/pages/NotFound'));
+const MovieCard = lazy(() => import('@/components/MovieCard/MovieCard'));
+const Cast = lazy(() => import('@/components/Cast/Cast'));
+const Reviews = lazy(() => import('@/components/Reviews/Reviews'));
 
 const buildLinkClass = ({ isActive }: { isActive: boolean }) => {
   return clsx(css.link, isActive && css.active);
@@ -26,17 +35,19 @@ function App() {
           Movies
         </NavLink>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/movies" element={<Movies />} />
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/movies" element={<Movies />} />
 
-        <Route path="/movies/:filmId" element={<MovieCard />}>
-          <Route path="cast" element={<Cast />} />
-          <Route path="reviews" element={<Reviews />} />
-        </Route>
+          <Route path="/movies/:filmId" element={<MovieCard />}>
+            <Route path="cast" element={<Cast />} />
+            <Route path="reviews" element={<Reviews />} />
+          </Route>
 
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
     </Container>
   );
 }
