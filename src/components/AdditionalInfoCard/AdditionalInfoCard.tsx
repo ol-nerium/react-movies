@@ -12,7 +12,6 @@ export default function AdditionalInfoCard({
     state: { from: string };
   };
 }) {
-  console.log(parentState);
   const backLinkRef = parentState.state;
   function linkBuilder(classes: {
     isActive: boolean;

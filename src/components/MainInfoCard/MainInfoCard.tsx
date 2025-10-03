@@ -24,16 +24,18 @@ export default function MainInfoCard({
       </div>
       <div className={css.mainContent}>
         <p className={css.score}>
-          Average score: <span>{vote_average}</span>
+          Average score: <span>{vote_average || 'No info'}</span>
         </p>
         <h4 className={css.overviewTitle}>Overview:</h4>
-        <p className={css.overviewText}>{overview}</p>
-        <h5 className={css.genresTitle}>Genres</h5>
+        <p className={css.overviewText}>{overview || 'No info'}</p>
+        <h5 className={css.genresTitle}>Genres:</h5>
         <p className={css.genres}>
-          {genres
-            .map((item: { id: number; name: string }) => item.name)
-            .join(' ')
-            .trim()}
+          {genres.length > 0
+            ? genres
+                .map((item: { id: number; name: string }) => item.name)
+                .join(' ')
+                .trim()
+            : 'no information'}
         </p>
       </div>
     </div>

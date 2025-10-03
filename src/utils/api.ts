@@ -8,23 +8,6 @@ const options = {
   },
 };
 
-function getData(query: string) {
-  return axios
-    .get(
-      `https://api.themoviedb.org/3/search/movie?query=${query
-        .split(' ')
-        .join('+')
-        .trim()}`,
-      options
-    )
-    .then(function (response) {
-      console.log(response.data.results);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-}
-
 function getTranding() {
   return axios.get(
     'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
@@ -65,7 +48,6 @@ function getMoviesListByName(name: string) {
 }
 
 export {
-  getData,
   getTranding,
   getMovieById,
   getImageConfiguration,

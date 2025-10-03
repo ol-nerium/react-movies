@@ -25,9 +25,7 @@ export default function Reviews() {
           </li>
         ))
       ) : (
-        <p className={css.reviewsListContent}>
-          We don't have reviews for this movie
-        </p>
+        <p className={css.withoutInfo}>No reviews yet(</p>
       )}
     </ul>
   );

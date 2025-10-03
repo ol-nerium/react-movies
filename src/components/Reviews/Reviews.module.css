@@ -17,6 +17,11 @@
 .reviewsListName span {
   color: rgb(239, 151, 151);
 }
+
+.withoutInfo {
+  font-size: 2rem;
+  text-align: center;
+}
 /* .reviewsListContent {
 }
 .reviewsListContent {

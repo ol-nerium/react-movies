@@ -46,7 +46,7 @@ export default function Cast() {
           </li>
         ))
       ) : (
-        <p className={css.castItemText}>No Info</p>
+        <p className={css.withoutInfo}>No Info(</p>
       )}
     </ul>
   );
