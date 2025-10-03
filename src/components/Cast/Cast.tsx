@@ -8,8 +8,10 @@ export default function Cast() {
   const { filmId } = useParams();
 
   useEffect(() => {
-    if (filmId) return;
-    getCredits(filmId).then(res => setCast(res.data.cast));
+    if (!filmId) return;
+    getCredits(filmId).then(res => {
+      setCast(res.data.cast);
+    });
   }, [filmId]);
   return (
     <ul>

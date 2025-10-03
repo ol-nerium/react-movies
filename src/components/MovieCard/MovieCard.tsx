@@ -14,8 +14,7 @@ export default function MovieCard() {
   });
   const { filmId } = useParams();
   const location = useLocation();
-
-  // console.log(location);
+  console.log(location);
   useEffect(() => {
     if (!filmId) return;
     getMovieById(filmId).then(res => {

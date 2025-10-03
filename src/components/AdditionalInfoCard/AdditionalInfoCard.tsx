@@ -1,9 +1,8 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import css from './AdditionalInfoCard.module.css';
 
 export default function AdditionalInfoCard({ testState }) {
-  const backLinkRef = testState.state?.from ?? '/movies';
-
+  const backLinkRef = testState.state;
   return (
     <div className={css.additionalCard}>
       <p className={css.additionalTitle}>Additional information</p>

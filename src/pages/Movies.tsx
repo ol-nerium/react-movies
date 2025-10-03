@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getMoviesListByName } from '@/utils/api';
-import { useSearchParams, useLocation, Link } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import MoviesList from '@/components/MoviesList/MoviesList';
 import SearchBox from '@/components/SearchBox/SearchBox';
@@ -28,19 +28,14 @@ export default function Movies() {
     );
   }, [searchingRequestValue]);
 
-  const location = useLocation();
-  // location.state = { from: location.pathname };
-  // console.log(location);
-
   return (
     <>
-      {!searchingRequestValue ? (
-        <SearchBox onSubmit={handleSubmit} />
-      ) : (
+      <SearchBox onSubmit={handleSubmit} />
+      {!searchingRequestValue || (
         <>
-          <Link to={location.state} state={{ from: location }}>
+          {/* <Link to={location.state} state={{ from: location }}>
             back
-          </Link>
+          </Link> */}
           <MoviesList filmsArr={resArr} />
         </>
       )}
